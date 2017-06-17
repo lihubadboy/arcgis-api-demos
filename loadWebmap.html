@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	<meta name="description" content="创建2dMap">
+	<meta name="author" content="ESRI China @ 2015">
+	<link rel="icon" type="image/png" href="../themes/blue-light/images/favicon.png" >
+
+	<title>load a web map</title>
+	<style>
+        html, body, #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        }                 
+    </style>
+
+     <link rel="stylesheet" href="http://localhost/arcgis_js_api/library/4.3/4.3/esri/css/main.css">     
+     <script src="http://localhost/arcgis_js_api/library/4.3/4.3/init.js"></script>
+     <script>
+        require([
+			"esri/Map",
+            "esri/WebMap",
+			"esri/views/MapView",
+			"esri/layers/TileLayer",-
+            "esri/layers/FeatureLayer",
+			"esri/Basemap",
+            "esri/portal/PortalItem",
+			"dojo/domReady!"
+	    ], function(Map,WebMap, MapView,TileLayer,FeatureLayer,Basemap,PortalItem){
+            var
+                portalItem = new PortalItem({
+                    id: '96757e88111b4a098728c744be338362',
+                    portal: 'http://lih.portal.com/arcgis'
+                }),
+                potalMap = new WebMap({
+                    portalItem: portalItem
+                });
+			var view = new MapView({
+			    container: "viewDiv",  // Reference to the scene div created in step 5
+			    map: potalMap,  // Reference to the map object created before the scene
+			});
+		});
+	</script>
+</head>
+<body>
+    <div id="viewDiv"></div>
+</body>
+</html>
