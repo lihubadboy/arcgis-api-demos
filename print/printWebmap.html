@@ -15,8 +15,13 @@
       width: 100%;
     }
   </style>
-  <link rel="stylesheet" href="http://nanping.arcgisonline.cn/jsapi/4.7/esri/css/main.css"> 
-   <script src="http://nanping.arcgisonline.cn/jsapi/4.7/init.js"></script>
+  <script type="text/javascript" src="js/html2canvas.min.js"></script>
+
+  <link rel="stylesheet" href="http://nanping.arcgisonline.cn/jsapi/4.9/esri/css/main.css">
+  <script src="http://nanping.arcgisonline.cn/jsapi/4.9/init.js"></script>
+
+<!--   <link rel="stylesheet" href="https://js.arcgis.com/4.9/esri/css/main.css">
+  <script src="https://js.arcgis.com/4.9/"></script> -->
 
   <script>
     require([
@@ -38,8 +43,8 @@
       var webmap = new WebMap({
         portalItem: { // autocasts as new PortalItem()
             // id: "f2e9b762544945f390ca4ac3671cfa72"   //online
-            id: '49148fb726ec432382099bf0554f028d',   //portal
-            portal: 'http://lih.portal.com/arcgis'
+            id: 'd6e0ce5c74024bd0ae1888b856a51f23',   //portal
+            portal: 'http://nanping.arcgisonline.cn/arcgis'
         }
       });
 
@@ -52,10 +57,27 @@
       });
     });
   </script>
+
+  <script>
+  function printmap() {
+    html2canvas(document.querySelector("#viewDiv")).then(canvas => {
+      document.body.appendChild(canvas)
+      convertCanvasToImage(canvas);
+    });
+  }
+  function convertCanvasToImage(canvas) {
+    var image = new Image();
+    image.src = canvas.toDataURL("image/png");
+    return image;
+  }
+</script>
 </head>
 
 <body>
   <div id="viewDiv"></div>
+   <div>
+    <button type="button" onclick="printmap();" style="position: absolute;top: 10px;left: 10px;"> click me</button>
+  </div>
 </body>
 
 </html>
