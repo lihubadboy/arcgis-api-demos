@@ -72,7 +72,8 @@
         const view = new MapView({
           container: "viewDiv",
           map: map,
-          zoom: 3
+          center: [117.17, 31.52],
+          zoom: 13
         });
         var tiledLayer = new WebTileLayer({
           urlTemplate: "http://t0.tianditu.com/vec_w/wmts?SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetTile&FORMAT=tiles&TILEMATRIXSET=w&STYLE=default&LAYER=vec&TILEMATRIX={level}&TILEROW={row}&TILECOL={col}",
@@ -83,6 +84,32 @@
 
         map.add(tiledLayer);
         map.add(tiledLayer1);
+
+        // First create a point geometry (this is the location of the Titanic)
+        var point = {
+          type: "point", // autocasts as new Point()
+          longitude: 117.17,
+          latitude: 31.52
+        };
+
+        // Create a symbol for drawing the point
+        var markerSymbol = {
+          type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+          color: [226, 119, 40],
+          outline: { // autocasts as new SimpleLineSymbol()
+            color: [255, 255, 255],
+            width: 2
+          }
+        };
+
+        // Create a graphic and add the geometry and symbol to it
+        var pointGraphic = new Graphic({
+          geometry: point,
+          symbol: markerSymbol
+        });
+
+        view.graphics.add(pointGraphic);
+
 
         // GraphicsLayer to hold graphics created via sketch view model
         const graphicsLayer = new GraphicsLayer({

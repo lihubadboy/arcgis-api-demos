@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .box1,
+      .box2,
+      .box3,
+      .box4,
+      .box5,
+      .box6,
+      .box7,
+      .box8 {
+        display: flex;
+      }
+      .box2 input {
+        flex-grow: 1;
+      }
+      .box3 input {
+        flex-grow: 1;
+      }
+      .box4 input {
+        flex-grow: 1;
+        align-self: flex-start;
+      }
+      .box5 input {
+        flex-grow: 1;
+        align-self: flex-end;
+      }
+      .box6 input {
+        flex-grow: 1;
+        align-self: center;
+      }
+      .box7 input {
+        flex-grow: 1;
+        align-self: stretch;
+      }
+      .box8 input {
+        flex-grow: 1;
+      }
+      .box8 {
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 原始布局 -->
+    <div class="box"><input type="email" /> <button>send</button></div>
+
+    <!--
+      1、弹性布局的项目（item）默认没有间隔
+      2、两个控件元素的宽度没有发生变化，因为弹性布局默认不改变项目的宽度。
+      3、弹性布局默认左对齐，所以两个控件会从行首开始排列。
+    -->
+    <div class="box1"><input type="email" /> <button>send</button></div>
+
+    <!--
+      flex-grow属性默认等于0，即使用本来的宽度，不拉伸。等于1时，就表示该项目宽度拉伸，占据当前行的所有剩余宽度。
+    -->
+    <div class="box2"><input type="email" /> <button>send</button></div>
+
+    <!--
+      弹性布局默认不改变项目的宽度，但是它默认改变项目的高度。如果项目没有显式指定高度，就将占据容器的所有高度。 本例中，按钮变高了，导致表单元素也变高了，使得输入框的高度自动拉伸了。
+    -->
+    <div class="box3">
+      <input type="email" />
+      <button>
+        <img
+          src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2933592148,354983771&fm=58"
+          alt=""
+          title=""
+        />
+      </button>
+    </div>
+
+    <!--
+      flex-start：顶边对齐，高度不拉伸
+      flex-end：底边对齐，高度不拉伸
+      center：居中，高度不拉伸
+      stretch：默认值，高度自动拉伸
+    -->
+    <div class="box4">
+      <input type="email" />
+      <button>
+        <img
+          src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2933592148,354983771&fm=58"
+          alt=""
+          title=""
+        />
+      </button>
+    </div>
+
+    <div class="box5">
+      <input type="email" />
+      <button>
+        <img
+          src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2933592148,354983771&fm=58"
+          alt=""
+          title=""
+        />
+      </button>
+    </div>
+
+    <div class="box6">
+      <input type="email" />
+      <button>
+        <img
+          src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2933592148,354983771&fm=58"
+          alt=""
+          title=""
+        />
+      </button>
+    </div>
+
+    <div class="box7">
+      <input type="email" />
+      <button>
+        <img
+          src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2933592148,354983771&fm=58"
+          alt=""
+          title=""
+        />
+      </button>
+    </div>
+
+    <div class="box8">
+      <input type="email" />
+      <button>
+        <img
+          src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2933592148,354983771&fm=58"
+          alt=""
+          title=""
+        />
+      </button>
+    </div>
+  </body>
+</html>

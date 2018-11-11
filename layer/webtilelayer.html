@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>WebTileLayer - 4.9</title>
+
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.9/esri/css/main.css" />
+    <script src="https://js.arcgis.com/4.9/"></script>
+
+
+    <script>
+      require([
+        "esri/layers/WebTileLayer",
+        "esri/Map",
+        "esri/views/MapView",
+        "esri/Basemap"
+      ], function(WebTileLayer, Map, MapView, Basemap) {
+        //   天地图矢量图层
+        var vecTiledLayer = new WebTileLayer({
+          urlTemplate:
+            "http://t0.tianditu.com/vec_w/wmts?SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetTile&FORMAT=tiles&TILEMATRIXSET=w&STYLE=default&LAYER=vec&TILEMATRIX={level}&TILEROW={row}&TILECOL={col}"
+        });
+        //  天地图注记图层
+        var cvaTiledLayer = new WebTileLayer({
+          urlTemplate:
+            "http://t0.tianditu.com/cva_w/wmts?SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetTile&FORMAT=tiles&TILEMATRIXSET=w&STYLE=default&LAYER=cva&TILEMATRIX={level}&TILEROW={row}&TILECOL={col}"
+        });
+        var customBasemap = new Basemap({
+          baseLayers: [vecTiledLayer, cvaTiledLayer],
+          title: "天地图",
+          id: "tianditu"
+        });
+
+        var map = new Map({
+          basemap: customBasemap
+        });
+
+        var view = new MapView({
+          container: "viewDiv",
+          map: map,
+          zoom: 13,
+          center: [116.38, 39.9]
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="viewDiv"></div>
+  </body>
+</html>

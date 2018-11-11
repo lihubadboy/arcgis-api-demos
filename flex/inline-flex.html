@@ -1,0 +1,71 @@
+<!-- 行内元素可可以使用flex布局  display:inline-flex; -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style type="text/css">
+      .main {
+        background-color: red;
+        display: flex; /*父div设置该属性*/
+      }
+      .main > div {
+        width: 50px;
+        height: 50px;
+        border: 1px solid blue;
+        box-sizing: border-box; /*这是css3属性，如果不懂，请继续往下阅读*/
+      }
+
+      .main1 {
+        width: 200px;
+        background-color: red;
+        display: flex; /*父div设置该属性*/
+      }
+      .main1 > div {
+        width: 50px;
+        height: 50px;
+        border: 1px solid blue;
+        box-sizing: border-box; /*这是css3属性，如果不懂，请继续往下阅读*/
+      }
+
+      .main2 {
+        background-color: red;
+        display: inline-flex; /*父div设置该属性*/
+      }
+      .main2 > div {
+        width: 50px;
+        height: 50px;
+        border: 1px solid blue;
+        box-sizing: border-box; /*这是css3属性，如果不懂，请继续往下阅读*/
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+    </div>
+    <div class="main1">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+    </div>
+    <div class="main2">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+    </div>
+    <div class="main2">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+    </div>
+  </body>
+</html>
